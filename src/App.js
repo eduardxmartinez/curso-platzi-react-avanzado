@@ -1,9 +1,12 @@
 import React from 'react'
+import { CategoriesList } from './components/CategoriesList'
+import { PhotoCardList } from './components/PhotoCardList'
+import { GlobalStyle } from './GlobalStyles'
 
-const App = () => {
-  return (
-    <div>App</div>
-  )
-}
-
-export default App
+export const App = () => (
+  <>
+  <GlobalStyle/>
+  <CategoriesList/>
+  <PhotoCardList/>
+  </>
+)
