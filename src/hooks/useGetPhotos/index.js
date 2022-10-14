@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client"
 
 const getPhotos = gql`
 query getPhotos($categoryId: ID) {
@@ -11,8 +11,8 @@ query getPhotos($categoryId: ID) {
     liked
   }
 }
-`;
+`
 export const useGetPhotos = categoryId => {
-    const { loading, data, error } = useQuery(getPhotos, { variables: { categoryId } })
+    const { loading, data, error } = useQuery(getPhotos, { variables: { categoryId: categoryId} })
     return {loading, data, error}
 }

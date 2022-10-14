@@ -4,6 +4,7 @@ import { Svg, SvgContainer } from "./styles";
 
 export const Logo = (props) => (
   <SvgContainer>
+    <a href="/">
     <Svg
       width={302.328}
       height={119.726}
@@ -38,5 +39,6 @@ export const Logo = (props) => (
         />
       </g>
     </Svg>
+    </a>
   </SvgContainer>
 );
