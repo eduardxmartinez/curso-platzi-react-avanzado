@@ -20,7 +20,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     max-width: 500px;
     overscroll-behavior: none;
-    width: 100%; 
+    width: 100%;
+    color: white; 
   }
 
   #app {

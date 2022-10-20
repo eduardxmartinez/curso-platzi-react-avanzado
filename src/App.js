@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
-import { CategoriesList } from "./components/CategoriesList";
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { Logo } from "./components/Logo";
-import { PhotoCardList } from "./components/PhotoCardList";
 import { PhotoCardWithQuery } from "./hooks/useGetPhotoCard";
+import { Home } from "./pages/Home";
 import { GlobalStyle } from "./styles/GlobalStyles";
 
 export const App = () => {
@@ -11,16 +11,20 @@ export const App = () => {
 
   return (
     <>
+    <Router>
       <GlobalStyle />
       <Logo />
-      {detailId 
-      ? (<PhotoCardWithQuery id={detailId} />)
-      : (
-        <Fragment>
-          <CategoriesList />
-          <PhotoCardList categoryId={2} />
-        </Fragment>
+      {detailId ? (
+        <PhotoCardWithQuery id={detailId} />
+      ) : (
+        
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/pet/:id" element={<Home/>} />
+          </Routes>
+        
       )}
+      </Router>
     </>
   );
 };

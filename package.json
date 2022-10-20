@@ -8,8 +8,8 @@
     "build": "webpack",
     "lint": "standard",
     "lint-fix": "standard --fix",
-    "dev": "webpack-dev-server",
-    "start": "webpack && webpack-dev-server"
+    "dev": "webpack-dev-server --history-api-fallback",
+    "start": "webpack && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.5"
   }
 }

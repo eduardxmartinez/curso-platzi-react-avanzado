@@ -1,15 +1,24 @@
 import React from "react";
-import { ImgWrapper, Img, Button, Article } from "./styles";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { ImgWrapper, Img, Article } from "./styles";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNearScreen } from "../../hooks/useNearScreen";
+import { FavButton } from "../LikeButton";
+import { useMuationToogleLike } from "../../hooks/useMutationToggleLike";
 
-export const PhotoCard = ({ id, likes = 0, src}) => {
-  const key = `like-${id}`
-  const [liked, setLiked] = useLocalStorage(key,false);
-  const Icon = liked ? AiFillHeart : AiOutlineHeart;
+export const PhotoCard = ({ id, likes = 0, src }) => {
+  const key = `like-${id}`;
+  const [liked, setLiked] = useLocalStorage(key, false);
   const [show, ref] = useNearScreen();
-  
+  const { mutation, mutationLoading, mutationError } = useMuationToogleLike();
+  const handleFavClick = () => {
+    !liked &&
+      mutation({
+        variables: {
+          input: { id },
+        },
+      });
+    setLiked(!liked);
+  };
 
   return (
     <Article ref={ref}>
@@ -20,9 +29,7 @@ export const PhotoCard = ({ id, likes = 0, src}) => {
               <Img src={src} />
             </ImgWrapper>
           </a>
-          <Button onClick={() => setLiked(!liked)}>
-            <Icon size={"32px"} color={"white"} /> {likes} likes!
-          </Button>
+          <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
         </>
       )}
     </Article>
