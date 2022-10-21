@@ -4,6 +4,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNearScreen } from "../../hooks/useNearScreen";
 import { FavButton } from "../LikeButton";
 import { useMuationToogleLike } from "../../hooks/useMutationToggleLike";
+import { Link } from "react-router-dom";
 
 export const PhotoCard = ({ id, likes = 0, src }) => {
   const key = `like-${id}`;
@@ -24,11 +25,11 @@ export const PhotoCard = ({ id, likes = 0, src }) => {
     <Article ref={ref}>
       {show && (
         <>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
         </>
       )}
