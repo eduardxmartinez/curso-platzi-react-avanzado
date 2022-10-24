@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Logo } from "./components/Logo";
+import { NavBar } from "./components/Navbar";
 import { Detail } from "./pages/Detail";
 import { Home } from "./pages/Home";
 import { GlobalStyle } from "./styles/GlobalStyles";
@@ -18,6 +19,7 @@ export const App = () => {
           <Route path="/detail/:detailId" element={<Detail />} />
         </Routes>
       </Router>
+      <NavBar/>
     </>
   );
 };
