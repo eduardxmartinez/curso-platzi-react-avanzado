@@ -30,6 +30,7 @@ width: 100%;
     color: white;
     font-weight: bold;
     &:after{
+        ${fadeIn({time:"0.5s"})};
         content:"•";
         color: white;
         position: absolute;

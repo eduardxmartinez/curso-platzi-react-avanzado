@@ -7,9 +7,7 @@ const SIZE = "32px";
 
 export const NavBar = () => {
   return (
-    <BrowserRouter>
     <Nav>
-        
       <Link end to="/">
         <AiOutlineHome size={SIZE} />
       </Link>
@@ -19,8 +17,6 @@ export const NavBar = () => {
       <Link end to="/user">
         <AiOutlineUser size={SIZE} />
       </Link>
-    
     </Nav>
-    </BrowserRouter>
   );
 };
