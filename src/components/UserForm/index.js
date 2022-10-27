@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
+import useInputValue from '../../hooks/useInputValue'
+import { Button, Input, Form, Title, Text } from './styles'
 
-const UserForm = ({onSubmit}) => {
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
+const UserForm = ({onSubmit,title}) => {
+    const email = useInputValue("")
+    const password = useInputValue("")
+
   return (
-    <form onSubmit={onSubmit}>
-        <input placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}/>
-        <input placeholder='Password' type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-          <button>Iniciar Sesión</button>
-    </form>
+    <>
+    <Title>{title}</Title>
+    <Form onSubmit={onSubmit}>
+        <Input placeholder='Email' type="email" {...email}/>
+        <Input placeholder='Password' type="password" {...password}/>
+          <Button>{title}</Button>
+    </Form>
+    {(title=="Registrarse")
+    ? <Text>¿Ya tienes una cuenta?<a> Inicia Sesión</a></Text> 
+    : <Text>¿No tienes una cuenta?<a> Registrate</a></Text>}
+    </>
   )
 }
 
