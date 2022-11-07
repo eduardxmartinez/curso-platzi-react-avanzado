@@ -17,7 +17,7 @@ export const NotRegistered = () => {
     return <h2>Hubo un problema</h2>;
   }
   if (mutationLoading) {
-    return <h2>Loading...</h2>;
+    return <h2>Cargando...</h2>;
   }
   return (
     <>
