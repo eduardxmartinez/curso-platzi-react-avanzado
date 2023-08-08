@@ -1,9 +1,9 @@
 import React from 'react'
 import useInputValue from '../../hooks/useInputValue'
-import { Button, Input, Form, Title, Text } from './styles'
+import { Button, Input, Form, Title, Text, Error } from './styles'
 
 
-const UserForm = ({onSubmit,title}) => {
+const UserForm = ({onSubmit,title,error}) => {
     const email = useInputValue("")
     const password = useInputValue("")
 
@@ -19,10 +19,13 @@ const UserForm = ({onSubmit,title}) => {
         <Input placeholder='Email' type="email" {...email}/>
         <Input placeholder='Password' type="password" {...password}/>
           <Button>{title}</Button>
+          {error && <Error>{error}</Error>}
     </Form>
-    {(title=="Registrarse")
+    {
+    (title=="Registrarse")
     ? <Text>¿Ya tienes una cuenta?<a> Inicia Sesión</a></Text> 
     : <Text>¿No tienes una cuenta?<a> Registrate</a></Text>}
+    
     </>
   )
 }

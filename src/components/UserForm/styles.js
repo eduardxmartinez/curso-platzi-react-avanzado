@@ -23,6 +23,7 @@ export const Button = styled.button`
     padding: 8px 4px;
     display: block;
     width: 100%;
+    margin-bottom: 8px;
 `
 
 export const Title = styled.h2`
@@ -32,5 +33,10 @@ export const Title = styled.h2`
     text-align: center;
 `
 export const Text = styled.p`
-    text-align:center;
+    text-align: center;
+`
+export const Error = styled.p`
+    color: red;
+    font-size: 14px;
+    text-align: center;
 `

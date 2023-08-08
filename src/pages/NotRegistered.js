@@ -2,27 +2,34 @@ import React, { useContext } from "react";
 import UserForm from "../components/UserForm";
 import { AppContext } from "../context/AppContext";
 import { useRegisterMutation } from "../hooks/useRegisterMutation";
+import { useLoginMutation } from "../hooks/useLoginMutation";
+
 
 export const NotRegistered = () => {
   const { activateAuth } = useContext(AppContext);
-  const { registerMutation, mutationLoading, mutationError } =
+  const { registerMutation,data: registerdata, loading: registerLoading, error: registerError } =
     useRegisterMutation();
+  
+  const { loginMutation,data: logindata, loading: loginLoading, error: loginError } =
+    useLoginMutation();
 
-  const onSubmit = ({ email, password }) => {
+  const onSubmitRegister = ({ email, password }) => {
     const input = { email, password };
     const variables = { input };
-    registerMutation({ variables }).then(activateAuth).then(activateAuth);
+    registerMutation({ variables }).then(activateAuth);
   };
-  if (mutationError) {
-    return <h2>Hubo un problema</h2>;
-  }
-  if (mutationLoading) {
-    return <h2>Cargando...</h2>;
-  }
+  const onSubmitLogin = ({ email, password }) => {
+    const input = { email, password };
+    const variables = { input };
+    loginMutation({ variables }).then(activateAuth);
+  };
+  const errorRegisterMsg = registerError && 'El usuario ya existe o hay algún problema.'
+  const errorLoginMsg = loginError && 'El usuario no existe o hay algún problema.'
+  
   return (
     <>
-      <UserForm title="Registrarse" onSubmit={onSubmit} />
-      <UserForm title="Iniciar Sesión" onSubmit={activateAuth} />
+      <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorRegisterMsg}/>
+      <UserForm title="Iniciar Sesión" onSubmit={onSubmitLogin} error={errorLoginMsg}/>
     </>
   );
 };
