@@ -13,6 +13,9 @@ export const Input = styled.input`
     padding: 8px 4px;
     display: block;
     width: 100%;
+    &[disabled] {
+        opacity: .5;
+    }
 `
 
 export const Button = styled.button`
@@ -24,6 +27,9 @@ export const Button = styled.button`
     display: block;
     width: 100%;
     margin-bottom: 8px;
+    &[disabled] {
+        opacity: .5;
+    }
 `
 
 export const Title = styled.h2`
@@ -40,3 +46,4 @@ export const Error = styled.p`
     font-size: 14px;
     text-align: center;
 `
+

@@ -28,8 +28,8 @@ export const NotRegistered = () => {
   
   return (
     <>
-      <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorRegisterMsg}/>
-      <UserForm title="Iniciar Sesión" onSubmit={onSubmitLogin} error={errorLoginMsg}/>
+      <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorRegisterMsg} disabled={registerLoading}/>
+      <UserForm title="Iniciar Sesión" onSubmit={onSubmitLogin} error={errorLoginMsg} disabled={loginLoading}/>
     </>
   );
 };
