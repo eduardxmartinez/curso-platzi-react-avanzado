@@ -13,12 +13,12 @@ const UserForm = ({onSubmit,title,error, disabled}) => {
     }
   return (
     <>
-    <Title>{title}</Title>
     <Form onSubmit={handleSubmit}>
+        <Title>{title}</Title>
         <Input disabled={disabled} placeholder='Email' type="email" {...email}/>
         <Input disabled={disabled} placeholder='Password' type="password" {...password}/>
-          <Button disabled={disabled}>{title}</Button>
-          {error && <Error>{error}</Error>}
+        <Button disabled={disabled}>{title}</Button>
+        {error && <Error>{error}</Error>}
     </Form>
     {
     (title=="Registrarse")

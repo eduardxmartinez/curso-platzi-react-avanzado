@@ -16,20 +16,28 @@ export const NotRegistered = () => {
   const onSubmitRegister = ({ email, password }) => {
     const input = { email, password };
     const variables = { input };
-    registerMutation({ variables }).then(activateAuth);
+    registerMutation({ variables }).then(({data}) => {
+      const {signup} = data
+      activateAuth(signup)
+    });
   };
+
   const onSubmitLogin = ({ email, password }) => {
     const input = { email, password };
     const variables = { input };
-    loginMutation({ variables }).then(activateAuth);
+    loginMutation({ variables }).then(({data}) => {
+      const {login} = data
+      activateAuth(login)
+    });
   };
+  
   const errorRegisterMsg = registerError && 'El usuario ya existe o hay algún problema.'
   const errorLoginMsg = loginError && 'El usuario no existe o hay algún problema.'
   
   return (
     <>
       <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorRegisterMsg} disabled={registerLoading}/>
-      <UserForm title="Iniciar Sesión" onSubmit={onSubmitLogin} error={errorLoginMsg} disabled={loginLoading}/>
+      <UserForm title="Iniciar sesión" onSubmit={onSubmitLogin} error={errorLoginMsg} disabled={loginLoading}/>
     </>
   );
 };
