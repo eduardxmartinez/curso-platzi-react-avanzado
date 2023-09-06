@@ -19,6 +19,7 @@ export const NotRegistered = () => {
     registerMutation({ variables }).then(({data}) => {
       const {signup} = data
       activateAuth(signup)
+      console.log(signup)
     });
   };
 
@@ -30,7 +31,7 @@ export const NotRegistered = () => {
       activateAuth(login)
     });
   };
-  
+
   const errorRegisterMsg = registerError && 'El usuario ya existe o hay algún problema.'
   const errorLoginMsg = loginError && 'El usuario no existe o hay algún problema.'
   
