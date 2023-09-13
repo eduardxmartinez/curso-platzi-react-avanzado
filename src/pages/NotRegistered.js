@@ -3,6 +3,7 @@ import UserForm from "../components/UserForm";
 import { AppContext } from "../context/AppContext";
 import { useRegisterMutation } from "../hooks/useRegisterMutation";
 import { useLoginMutation } from "../hooks/useLoginMutation";
+import { Helmet } from "react-helmet";
 
 
 export const NotRegistered = () => {
@@ -37,6 +38,9 @@ export const NotRegistered = () => {
   
   return (
     <>
+      <Helmet>
+        <title>Petgram | Log in</title>
+      </Helmet>
       <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorRegisterMsg} disabled={registerLoading}/>
       <UserForm title="Iniciar sesión" onSubmit={onSubmitLogin} error={errorLoginMsg} disabled={loginLoading}/>
     </>
