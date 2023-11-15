@@ -5,7 +5,7 @@ import { Layout } from '../components/Layout'
 
 
 
-export const Detail = () => {
+const Detail = () => {
     const params = useParams()
     return(
         <Layout title={`Photo ${params.detailId}`}>
@@ -14,3 +14,5 @@ export const Detail = () => {
         
     )
 }
+
+export default Detail

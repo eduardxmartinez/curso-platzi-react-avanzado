@@ -1,20 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, Suspense } from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Logo } from "./components/Logo";
 import { NavBar } from "./components/Navbar";
 import { AppContext } from "./context/AppContext";
-import { Detail } from "./pages/Detail";
-import Favs from "./pages/Favs";
-import { Home } from "./pages/Home";
-import { NotRegistered } from "./pages/NotRegistered";
-import User from "./pages/User";
 import { GlobalStyle } from "./styles/GlobalStyles";
-import NotFound from "./pages/NotFound";
+
+const Favs = React.lazy(()=> import('./pages/Favs'))
+const Home = React.lazy(()=> import('./pages/Home'))
+const Detail = React.lazy(()=> import('./pages/Detail'))
+const User = React.lazy(()=> import('./pages/User'))
+const NotRegistered = React.lazy(()=> import('./pages/NotRegistered'))
+const NotFound = React.lazy(()=> import('./pages/NotFound'))
 
 export const App = () => {
   const {isAuth} = useContext(AppContext)
   return (
-    <>
+    <Suspense fallback={<div/>}>
       <Router>
       <GlobalStyle />
       <Logo />
@@ -29,6 +30,6 @@ export const App = () => {
         </Routes>
         <NavBar/>
       </Router>
-    </>
+    </Suspense>
   );
 };

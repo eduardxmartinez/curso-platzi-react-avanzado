@@ -6,7 +6,7 @@ import { useLoginMutation } from "../hooks/useLoginMutation";
 import { Helmet } from "react-helmet";
 
 
-export const NotRegistered = () => {
+const NotRegistered = () => {
   const { activateAuth } = useContext(AppContext);
   const { registerMutation,data: registerdata, loading: registerLoading, error: registerError } =
     useRegisterMutation();
@@ -46,3 +46,5 @@ export const NotRegistered = () => {
     </>
   );
 };
+
+export default NotRegistered

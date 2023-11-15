@@ -4,7 +4,7 @@ import { CategoriesList } from "../components/CategoriesList";
 import { PhotoCardList } from "../components/PhotoCardList";
 import { Helmet } from "react-helmet";
 
-export const Home = () => {
+const HomePage = () => {
   const params = useParams();
   return (
     <Fragment>
@@ -16,3 +16,7 @@ export const Home = () => {
     </Fragment>
   );
 };
+
+const Home = React.memo(HomePage)
+
+export default Home
