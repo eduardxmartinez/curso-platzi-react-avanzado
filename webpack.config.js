@@ -37,10 +37,10 @@ module.exports = {
           }
         },
         {
-          urlPattern: new RegExp('(https://)'),
-          handler: 'CacheFirst',
+          urlPattern: new RegExp('(https://petgram-server-eduardx.vercel.app)'),
+          handler: 'NetworkFirst',
           options: {
-            cacheName: 'images'
+            cacheName: 'api'
           }
         }
       ]
